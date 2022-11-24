@@ -1,0 +1,142 @@
+﻿@model Mail.Models.MailDetailViewModel
+
+@{
+    ViewData["Title"] = "Mail Detail";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+
+                <i class="fa fa-align-justify"></i> Mail Detail
+
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        @using (Html.BeginForm("List", "MailDetail", FormMethod.Post, new { @class = "form-horizontal input-sm", @id = "filterForm" }))
+                        {
+                            <!-- form get'te submit yapilirken page bilgisi ve siralama bilgisinin tutulmasi icin -->
+                            @Html.HiddenFor(m => m.Body, new { @id = "hiddenBody" });
+                            @Html.HiddenFor(m => m.Header, new { @id = "hiddenHeader" });
+
+
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Mail Type (Select)</label>
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.TypeId, Model.MailTypeSelectList, "Please Select", new { @class = "form-control form-control-sm", @id = "cmbMailType" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Header</label>
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(m => m.Header, new { @class = "form-control form-control-sm", @id = "txtHeader" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Body</label>
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(m => m.Body, new { @class = "form-control form-control-sm", @id = "txtBody" })
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-sm btn-primary" type="submit" name="SubmitType" value="List">
+                                        <i class="fa fa-search"></i> Save
+                                    </button>
+                                    <hr />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+              
+
+                @if (ViewBag.ErrorMessage != null && !string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div class="text-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+                @if (ViewBag.ErrorMessageList != null)
+                {
+                    <div class="text-danger">
+                        @foreach (var item in ViewBag.ErrorMessageList)
+                        {
+                            <span>@item</span>
+                            <br />
+                        }
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+
+@section Scripts {
+    <!-- pagesize ve current page js  -->
+    <script>
+        $(document).ready(function(){
+            var data = [];
+
+            $(".onlyNumberEntry").keypress(function (e) {
+                if (e.which == 13) {
+                    $('#filterForm').submit();
+                }
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+                }
+            });
+
+            $("#cmbMailType").change(function (e) {
+                data[0] = $("#cmbMailType").val();
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SelectMailDetail", "MailDetail")",
+                    data: { data },
+                    dataType: "json",
+                    success: function (rslt) {
+                        if (rslt == "2") {
+                            alert("Select Is Required");
+                        }
+                        if (rslt == "0") {
+                            alert('Error');
+                        }
+                        $("#txtHeader").val(rslt.header);
+                        $("#txtBody").val(rslt.body);
+                        $("#hiddenHeader").val(rslt.header);
+                        $("#hiddenBody").val(rslt.body);
+                    },
+                    error: function (rslt) {
+                        alert('Error');
+                    }
+                    });
+            });
+
+            $("#txtHeader").change(function (e) {
+                $("#hiddenHeader").val($("#txtHeader").val());
+            });
+
+            $("#txtBody").change(function (e) {
+                $("#hiddenBody").val($("#txtBody").val());
+            });
+
+        }); // end of $(document).ready
+
+    </script>
+
+}

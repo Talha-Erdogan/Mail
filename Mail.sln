@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail", "Mail\Mail.csproj", "{2306B0F1-6ABA-4958-A691-B2D334021904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail.Data", "Mail.Data\Mail.Data.csproj", "{6E6A9B23-A8DD-4190-B0FB-68142106F64C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail.Business", "Mail.Business\Mail.Business.csproj", "{3415261D-DCBD-483D-AC33-FAB9F2F2BACF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2306B0F1-6ABA-4958-A691-B2D334021904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2306B0F1-6ABA-4958-A691-B2D334021904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2306B0F1-6ABA-4958-A691-B2D334021904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2306B0F1-6ABA-4958-A691-B2D334021904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E6A9B23-A8DD-4190-B0FB-68142106F64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E6A9B23-A8DD-4190-B0FB-68142106F64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E6A9B23-A8DD-4190-B0FB-68142106F64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E6A9B23-A8DD-4190-B0FB-68142106F64C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3415261D-DCBD-483D-AC33-FAB9F2F2BACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3415261D-DCBD-483D-AC33-FAB9F2F2BACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3415261D-DCBD-483D-AC33-FAB9F2F2BACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3415261D-DCBD-483D-AC33-FAB9F2F2BACF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DCF417D-272A-44B8-9AA4-DA115F8574FE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,110 @@
+﻿
+@model List<Mail.Data.Entity.MailType>
+
+@{
+    ViewData["Title"] = "Mail Type List";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Mail Type List
+                    <span>- </span><a class="btn btn-sm btn-primary" href="~/MailType/Add"> Add Mail Type</a>
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                    </div>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                    <th>*</th>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                  
+                                        <td>
+                                            <a class="btn btn-sm btn-danger" href="~/MailType/Update/@item.Id">Update</a>
+                                        </td>
+                                    
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+               
+               
+                @if (ViewBag.ErrorMessage != null && !string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div class="text-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+                @if (ViewBag.ErrorMessageList != null)
+                {
+                    <div class="text-danger">
+                        @foreach (var item in ViewBag.ErrorMessageList)
+                        {
+                            <span>@item</span>
+                            <br />
+                        }
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+
+@section Scripts {
+    <!-- pagesize ve current page js  -->
+    <script>
+        $(document).ready(function () {
+            $(".onlyNumberEntry").keypress(function (e) {
+                if (e.which == 13) {
+                    $('#filterForm').submit();
+                }
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+        }); // end of $(document).ready
+
+
+        function ClickSorting(sortOn, sortDirection) {
+
+            $('#filterForm').submit();
+        }
+
+        function ClickPaging(currentPage, pageSize) {
+
+            $('#filterForm').submit();
+        }
+    </script>
+
+}
