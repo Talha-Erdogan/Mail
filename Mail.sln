@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail.Data", "Mail.Data\Mail
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail.Business", "Mail.Business\Mail.Business.csproj", "{3415261D-DCBD-483D-AC33-FAB9F2F2BACF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_doc", "_doc", "{0949B6CA-490F-4644-9C05-5B4BA0F3F0F2}"
+	ProjectSection(SolutionItems) = preProject
+		script.txt = script.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

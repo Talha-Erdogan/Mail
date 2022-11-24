@@ -1,0 +1,52 @@
+USE [Mail]
+GO
+/****** Object:  Table [dbo].[MailDetail]    Script Date: 25.11.2022 02:38:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MailDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TypeId] [int] NOT NULL,
+	[Header] [nvarchar](500) NULL,
+	[Body] [nvarchar](max) NULL,
+ CONSTRAINT [PK_MailDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MailType]    Script Date: 25.11.2022 02:38:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MailType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](500) NULL,
+ CONSTRAINT [PK_MailType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[MailDetail] ON 
+GO
+INSERT [dbo].[MailDetail] ([Id], [TypeId], [Header], [Body]) VALUES (1, 2, N'Error -Header', N'Error -Body')
+GO
+INSERT [dbo].[MailDetail] ([Id], [TypeId], [Header], [Body]) VALUES (2, 1, N'Success -Header', N'Success -Body')
+GO
+INSERT [dbo].[MailDetail] ([Id], [TypeId], [Header], [Body]) VALUES (3, 3, N'Info -Header', N'Info -Body')
+GO
+SET IDENTITY_INSERT [dbo].[MailDetail] OFF
+GO
+SET IDENTITY_INSERT [dbo].[MailType] ON 
+GO
+INSERT [dbo].[MailType] ([Id], [Name]) VALUES (1, N'Success')
+GO
+INSERT [dbo].[MailType] ([Id], [Name]) VALUES (2, N'Error')
+GO
+INSERT [dbo].[MailType] ([Id], [Name]) VALUES (3, N'Info')
+GO
+SET IDENTITY_INSERT [dbo].[MailType] OFF
+GO
